@@ -15,34 +15,41 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.SalesTransaction[0].TransactionTime)
+                @Html.DisplayNameFor(model => model.Sales[0].Time)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SalesTransaction[0].Branch)
+                @Html.DisplayNameFor(model => model.Sales[0].BranchName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SalesTransaction[0].Item)
+                @Html.DisplayNameFor(model => model.Sales[0].MenuItemName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SalesTransaction[0].Size)
+                @Html.DisplayNameFor(model => model.Sales[0].PortionSize)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.SalesTransaction) {
+    @if (Model.Sales.Count == 0)
+    {
+        <tr>
+            <td colspan="5" class="text-center text-danger"> No Data to display!</td>
+        </tr>
+    }
+    @foreach (var item in Model.Sales)
+    {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TransactionTime)
+                @Html.DisplayFor(modelItem => item.Time)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Branch.Name)
+                @Html.DisplayFor(modelItem => item.BranchName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Item.Name)
+                @Html.DisplayFor(modelItem => item.MenuItemName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Size)
+                @Html.DisplayFor(modelItem => item.PortionSize)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
@@ -50,6 +57,6 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
