@@ -15,11 +15,21 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="SalesTransaction.Id" />
-           <div class="form-group">
-               <label asp-for="SalesTransaction.TransactionTime" class="control-label"></label>
-               <input asp-for="SalesTransaction.TransactionTime" class="form-control" />
-               @* <span asp-validation-for="SalesTransaction.TransactionTime" class="text-danger"></span> *@
-           </div>
+            <div class="form-group">
+                <label asp-for="SalesTransaction.Date" class="control-label"></label>
+                <input asp-for="SalesTransaction.Date" class="form-control" type="date" />
+                @* <span asp-validation-for="SalesTransaction.TransactionTime" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesTransaction.FromTime" class="control-label"></label>
+                <input asp-for="SalesTransaction.FromTime" class="form-control" type="time" />
+                @* <span asp-validation-for="SalesTransaction.TransactionTime" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesTransaction.ToTime" class="control-label"></label>
+                <input asp-for="SalesTransaction.ToTime" class="form-control" type="time"/>
+                @* <span asp-validation-for="SalesTransaction.TransactionTime" class="text-danger"></span> *@
+            </div>
            <div class="form-group">
                <label asp-for="SalesTransaction.BranchId" class="control-label"></label>
                <select asp-for="SalesTransaction.BranchId" class="form-control" asp-items="Model.BranchesLookup"></select>
@@ -30,9 +40,14 @@
                <select asp-for="SalesTransaction.ItemId" class="form-control" asp-items="Model.MenuItemsLookup"></select>
                @* <span asp-validation-for="SalesTransaction.Item" class="text-danger"></span> *@
            </div>
-           <div class="form-group">
-               <label asp-for="SalesTransaction.Size" class="control-label"></label>
-               <select asp-for="SalesTransaction.Size" class="form-control" asp-items="Model.PortionSizeLookup"></select>
+            <div class="form-group">
+                <label asp-for="SalesTransaction.Size" class="control-label"></label>
+                <select asp-for="SalesTransaction.Size" class="form-control" asp-items="Model.PortionSizeLookup"></select>
+                @* <span asp-validation-for="SalesTransaction.Size" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+               <label asp-for="SalesTransaction.Quantity" class="control-label"></label>
+                <input asp-for="SalesTransaction.Quantity" class="form-control" type="number"/> 
                @* <span asp-validation-for="SalesTransaction.Size" class="text-danger"></span> *@
            </div>
             <div class="form-group">

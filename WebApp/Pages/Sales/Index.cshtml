@@ -15,7 +15,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Sales[0].Time)
+                @Html.DisplayNameFor(model => model.Sales[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sales[0].FromTime)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Sales[0].ToTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Sales[0].BranchName)
@@ -25,6 +31,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Sales[0].PortionSize)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Sales[0].Quantity)
             </th>
             <th></th>
         </tr>
@@ -40,7 +49,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Time)
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BranchName)
@@ -50,6 +65,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PortionSize)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

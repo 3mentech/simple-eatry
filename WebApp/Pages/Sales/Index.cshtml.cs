@@ -31,10 +31,13 @@ namespace WebApp.Pages.Sales
                     AsNoTracking().Select( s => new SalesListViewModel
                     {
                         Id =  s.Id,
-                        Time = s.TransactionTime,
+                        Date = s.Date,
+                        FromTime = s.FromTime,
+                        ToTime = s.ToTime,
                         BranchName = s.Branch.Name,
                         PortionSize = s.Size.ToString(),
-                        MenuItemName = s.Item.Name
+                        MenuItemName = s.Item.Name,
+                        Quantity = s.Quantity
                     }).ToListAsync();
             }
         }

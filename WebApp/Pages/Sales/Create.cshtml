@@ -15,8 +15,18 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="SalesTransaction.TransactionTime" class="control-label"></label>
-                <input asp-for="SalesTransaction.TransactionTime" class="form-control" />
+                <label asp-for="SalesTransaction.Date" class="control-label"></label>
+                <input asp-for="SalesTransaction.Date" class="form-control" type="date" />
+                @* <span asp-validation-for="SalesTransaction.TransactionTime" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesTransaction.FromTime" class="control-label"></label>
+                <input asp-for="SalesTransaction.FromTime" class="form-control" type="time" />
+                @* <span asp-validation-for="SalesTransaction.TransactionTime" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesTransaction.ToTime" class="control-label"></label>
+                <input asp-for="SalesTransaction.ToTime" class="form-control" type="time"/>
                 @* <span asp-validation-for="SalesTransaction.TransactionTime" class="text-danger"></span> *@
             </div>
             <div class="form-group">
@@ -34,6 +44,11 @@
                 <select asp-for="SalesTransaction.Size" class="form-control" asp-items="Model.PortionSizeLookup"></select>
                 @* <span asp-validation-for="SalesTransaction.Size" class="text-danger"></span> *@
             </div>
+            <div class="form-group">
+               <label asp-for="SalesTransaction.Quantity" class="control-label"></label>
+               <input asp-for="SalesTransaction.Quantity" class="form-control" type="number"/> 
+               @* <span asp-validation-for="SalesTransaction.Size" class="text-danger"></span> *@
+           </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

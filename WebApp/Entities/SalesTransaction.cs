@@ -4,22 +4,31 @@ namespace WebApp.Entities;
 public class SalesTransaction
 {   
     public Guid Id { get; set; }
-    public DateTime TransactionTime { get; set; }
+    
+    public DateOnly Date { get; set; }
+    
+    public TimeOnly FromTime { get; set; }
+    
+    public TimeOnly ToTime { get; set; }
     public Branch Branch { get; set; }
     public Guid BranchId { get; set; }
     public MenuItem Item { get; set; }
     public Guid ItemId { get; set; }
     public Size Size { get; set; }
 
+    public decimal Quantity { get; set; }
+
     public SalesTransaction()
     {
         Id = Guid.NewGuid();
     }
     
-    public SalesTransaction(DateTime transactionTime, Branch branch, MenuItem item, Size size)
+    public SalesTransaction(DateOnly date,TimeOnly fromTime, TimeOnly toTime, Branch branch, MenuItem item, Size size)
     {
         Id = Guid.NewGuid();
-        TransactionTime = transactionTime;
+        Date = date;
+        FromTime = fromTime;
+        ToTime = toTime;
         Branch = branch;
         BranchId = branch.Id;
         Item = item;
