@@ -29,11 +29,10 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: rafimk/web-app:latest  
+      - name: Build and push Docker image
+        run: 
+          docker build -t rafimk/web-app:latest ./WebApp
+          docker push rafimk/web-app:latest
 
 
   deploy:
