@@ -28,7 +28,7 @@ namespace WebApp.Pages.MenuItems
                 return NotFound();
             }
 
-            var menuitem = await _context.MenuItems.FirstOrDefaultAsync(m => m.Id == id);
+            var menuitem = await _context.MenuItems.Include(x=> x.MenuCategory).AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
             if (menuitem == null)
             {
                 return NotFound();
