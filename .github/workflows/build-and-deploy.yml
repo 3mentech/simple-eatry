@@ -54,5 +54,6 @@ jobs:
             docker stop web-app
             # Remove old container
             docker rm web-app
+            docker image rm web-app
             # Run a new container from a new image
             docker run -d --restart always --name web-app --network membership-app --ip 172.18.0.8 -p 6002:6002 rafimk/web-app:latest
