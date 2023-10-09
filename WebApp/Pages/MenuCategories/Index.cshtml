@@ -1,5 +1,5 @@
 @page
-@model WebApp.Pages.MenuItems.IndexModel
+@model WebApp.Pages.MenuCategories.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -15,22 +15,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MenuItem[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MenuItem[0].Category)
+                @Html.DisplayNameFor(model => model.MenuCategory[0].Name)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.MenuItem) {
+@foreach (var item in Model.MenuCategory) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

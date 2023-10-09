@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebApp.Entities;
 using WebApp.Persistence;
 
-namespace WebApp.Pages.MenuItems
+namespace WebApp.Pages.MenuCategories
 {
     public class CreateModel : PageModel
     {
         private readonly WebApp.Persistence.SimpleEatryDbContext _context;
-        public List<SelectListItem> CategoryLookup { get; set; }
 
         public CreateModel(WebApp.Persistence.SimpleEatryDbContext context)
         {
@@ -23,27 +21,22 @@ namespace WebApp.Pages.MenuItems
 
         public IActionResult OnGet()
         {
-            CategoryLookup = _context.MenuCategories.Select(b => new SelectListItem
-            {
-                Text = b.Name,
-                Value = b.Id.ToString()
-            }).AsNoTracking().ToList();
             return Page();
         }
 
         [BindProperty]
-        public MenuItem MenuItem { get; set; } = default!;
+        public MenuCategory MenuCategory { get; set; } = default!;
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if ( MenuItem == null)
+          if (!ModelState.IsValid || _context.MenuCategories == null || MenuCategory == null)
             {
                 return Page();
             }
 
-            _context.MenuItems.Add(MenuItem);
+            _context.MenuCategories.Add(MenuCategory);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

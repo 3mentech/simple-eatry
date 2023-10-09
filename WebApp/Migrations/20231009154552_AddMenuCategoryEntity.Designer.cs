@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp.Persistence;
 
@@ -11,9 +12,11 @@ using WebApp.Persistence;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(SimpleEatryDbContext))]
-    partial class SimpleEatryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231009154552_AddMenuCategoryEntity")]
+    partial class AddMenuCategoryEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,16 +61,11 @@ namespace WebApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("MenuCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MenuCategoryId");
 
                     b.ToTable("MenuItems");
                 });
@@ -106,15 +104,6 @@ namespace WebApp.Migrations
                     b.HasIndex("ItemId");
 
                     b.ToTable("SalesTransactions");
-                });
-
-            modelBuilder.Entity("WebApp.Entities.MenuItem", b =>
-                {
-                    b.HasOne("WebApp.Entities.MenuCategory", "MenuCategory")
-                        .WithMany()
-                        .HasForeignKey("MenuCategoryId");
-
-                    b.Navigation("MenuCategory");
                 });
 
             modelBuilder.Entity("WebApp.Entities.SalesTransaction", b =>

@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Entities;
-using WebApp.Models.ViewModels;
 using WebApp.Persistence;
 
-namespace WebApp.Pages.MenuItems
+namespace WebApp.Pages.MenuCategories
 {
     public class IndexModel : PageModel
     {
@@ -20,19 +19,13 @@ namespace WebApp.Pages.MenuItems
             _context = context;
         }
 
-        public IList<MenuItemListViewModel> MenuItem { get;set; } = default!;
+        public IList<MenuCategory> MenuCategory { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.MenuItems != null)
+            if (_context.MenuCategories != null)
             {
-                MenuItem = await _context.MenuItems.Include(x=> x.MenuCategory).AsNoTracking()
-                    .Select( x=> new MenuItemListViewModel
-                    {
-                        Name = x.Name,
-                        Category = x.MenuCategory.Name ?? string.Empty,
-                        Id = x.Id
-                    }).ToListAsync();
+                MenuCategory = await _context.MenuCategories.ToListAsync();
             }
         }
     }

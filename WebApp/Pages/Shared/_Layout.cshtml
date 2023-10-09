@@ -28,8 +28,14 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-page="/Branches/Index">Branches</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/MenuItems/Index">Menu</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu Management
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-area="" asp-page="/MenuCategories/Index">Menu Categories</a></li>
+                        <li><a class="dropdown-item" asp-area="" asp-page="/MenuItems/Index">Menu Items</a></li>
+                      </ul>
                     </li>
                 </ul>
             </div>

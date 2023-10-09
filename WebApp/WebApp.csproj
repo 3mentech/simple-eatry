@@ -30,6 +30,7 @@
     <ItemGroup>
       <Folder Include="Models\FormModels\" />
       <Folder Include="Pages\Branches\" />
+      <Folder Include="Pages\MenuCategories\" />
       <Folder Include="Pages\MenuItems\" />
       <Folder Include="Pages\Sales\" />
     </ItemGroup>

@@ -9,12 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using WebApp.Entities;
 using WebApp.Persistence;
 
-namespace WebApp.Pages.MenuItems
+namespace WebApp.Pages.MenuCategories
 {
     public class EditModel : PageModel
     {
         private readonly WebApp.Persistence.SimpleEatryDbContext _context;
-        public List<SelectListItem> CategoryLookup { get; set; }
 
         public EditModel(WebApp.Persistence.SimpleEatryDbContext context)
         {
@@ -22,27 +21,21 @@ namespace WebApp.Pages.MenuItems
         }
 
         [BindProperty]
-        public MenuItem MenuItem { get; set; } = default!;
+        public MenuCategory MenuCategory { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
-            if (id == null || _context.MenuItems == null)
+            if (id == null || _context.MenuCategories == null)
             {
                 return NotFound();
             }
-            
-            CategoryLookup = _context.MenuCategories.Select(b => new SelectListItem
-            {
-                Text = b.Name,
-                Value = b.Id.ToString()
-            }).AsNoTracking().ToList();
 
-            var menuitem =  await _context.MenuItems.FirstOrDefaultAsync(m => m.Id == id);
-            if (menuitem == null)
+            var menucategory =  await _context.MenuCategories.FirstOrDefaultAsync(m => m.Id == id);
+            if (menucategory == null)
             {
                 return NotFound();
             }
-            MenuItem = menuitem;
+            MenuCategory = menucategory;
             return Page();
         }
 
@@ -50,12 +43,12 @@ namespace WebApp.Pages.MenuItems
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (MenuItem == null)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(MenuItem).State = EntityState.Modified;
+            _context.Attach(MenuCategory).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +56,7 @@ namespace WebApp.Pages.MenuItems
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MenuItemExists(MenuItem.Id))
+                if (!MenuCategoryExists(MenuCategory.Id))
                 {
                     return NotFound();
                 }
@@ -76,9 +69,9 @@ namespace WebApp.Pages.MenuItems
             return RedirectToPage("./Index");
         }
 
-        private bool MenuItemExists(Guid id)
+        private bool MenuCategoryExists(Guid id)
         {
-          return (_context.MenuItems?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.MenuCategories?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

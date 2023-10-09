@@ -15,6 +15,8 @@ public class SimpleEatryDbContext : DbContext
     public DbSet<Branch> Branches { get; set; }
     public DbSet<MenuItem> MenuItems { get; set; }
     
+    public DbSet<MenuCategory> MenuCategories { get; set; }
+    
     protected override void ConfigureConventions(ModelConfigurationBuilder builder)
     {
         base.ConfigureConventions(builder);

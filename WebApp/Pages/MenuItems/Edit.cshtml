@@ -16,6 +16,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MenuItem.Id" />
             <div class="form-group">
+                <label asp-for="MenuItem.MenuCategoryId" class="control-label"></label>
+                <select asp-for="MenuItem.MenuCategoryId" class="form-control" asp-items="Model.CategoryLookup"></select>
+                @* <span asp-validation-for="MenuItem.MenuCategoryId" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
                 <label asp-for="MenuItem.Name" class="control-label"></label>
                 <input asp-for="MenuItem.Name" class="form-control" />
                 <span asp-validation-for="MenuItem.Name" class="text-danger"></span>
