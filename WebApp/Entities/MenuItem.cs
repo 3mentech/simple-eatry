@@ -6,6 +6,9 @@ public class MenuItem
     public string Name { get; set; }= string.Empty;
     public Guid? MenuCategoryId { get; set; }
     public MenuCategory MenuCategory { get; set; }
+    
+    // public List<RecipeItem>? Recipes { get; set; }
+    
     public MenuItem()
     {
         

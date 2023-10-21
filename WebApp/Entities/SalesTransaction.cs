@@ -17,6 +17,11 @@ public class SalesTransaction
     public Size Size { get; set; }
 
     public decimal Quantity { get; set; }
+    
+    // public bool IsWeekend  { get; set; } = false;
+    // public bool IsHoliday  { get; set; } = false;
+    // public bool IsOffSeason  { get; set; } = false;
+    
 
     public SalesTransaction()
     {
