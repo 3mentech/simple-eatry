@@ -16,6 +16,10 @@ public class SimpleEatryDbContext : DbContext
     public DbSet<MenuItem> MenuItems { get; set; }
     
     public DbSet<MenuCategory> MenuCategories { get; set; }
+    public DbSet<RecipeItem> RecipeItems { get; set; }
+    public DbSet<Ingredient> Ingredients { get; set; }
+    public DbSet<Holiday> Holidays { get; set; }
+    
     
     protected override void ConfigureConventions(ModelConfigurationBuilder builder)
     {
@@ -27,4 +31,10 @@ public class SimpleEatryDbContext : DbContext
         builder.Properties<TimeOnly>()
             .HaveConversion<TimeOnlyConverter, TimeOnlyComparer>();
     }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+    }
+
 }

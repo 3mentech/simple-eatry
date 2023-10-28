@@ -18,9 +18,9 @@ public class SalesTransaction
 
     public decimal Quantity { get; set; }
     
-    // public bool IsWeekend  { get; set; } = false;
-    // public bool IsHoliday  { get; set; } = false;
-    // public bool IsOffSeason  { get; set; } = false;
+    public bool IsWeekend  { get; set; } = false;
+    public bool IsHoliday  { get; set; } = false;
+    public bool IsOffSeason  { get; set; } = false;
     
 
     public SalesTransaction()
